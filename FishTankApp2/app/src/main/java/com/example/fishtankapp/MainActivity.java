@@ -4,9 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -20,9 +24,12 @@ import com.google.firebase.messaging.FirebaseMessaging;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView turbidityStatus,phValue,phStatus, availableFood,needFeeding;
-    DatabaseReference reference_data,reference_token;
-    String token;
+    private TextView turbidityStatus, phValue, phStatus, availableFood, needFeeding, progressText;
+    private DatabaseReference reference_data, reference_token;
+    private String token;
+    private ProgressBar progressBar;
+    int i = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +39,13 @@ public class MainActivity extends AppCompatActivity {
         turbidityStatus = findViewById(R.id.turbidityStatus);
         phValue = findViewById(R.id.phValue);
         phStatus = findViewById(R.id.phStatus);
-        availableFood = findViewById(R.id.availableFood);
         needFeeding = findViewById(R.id.needFeeding);
+        progressBar = findViewById(R.id.progress_bar);
+        progressText = findViewById(R.id.progress_bar_text);
 
         reference_data = FirebaseDatabase.getInstance().getReference().child("Sensor Data");
         reference_token = FirebaseDatabase.getInstance().getReference().child("Tokens");
+
 
         FirebaseMessaging.getInstance().getToken()
                 .addOnCompleteListener(new OnCompleteListener<String>() {
@@ -60,31 +69,42 @@ public class MainActivity extends AppCompatActivity {
                     for (DataSnapshot snapshotData : snapshot.getChildren()) {
                         switch (snapshotData.getKey().toString()) {
                             case "Available food":
-                                availableFood.setText(snapshotData.getValue().toString());
+                                progressText.setText(String.valueOf(snapshotData.getValue())+"%");
+                                int val = Integer.valueOf(snapshotData.getValue().toString());
+                                progressBar.setProgress(val);
                                 break;
                             case "Need Feeding":
-                                needFeeding.setText(snapshotData.getValue().toString());
+                                if (snapshotData.getValue().toString().equals("Yes")){
+                                    needFeeding.setText("Please Fill the Feeding Bottle");
+                                    Toast.makeText(MainActivity.this.getApplicationContext(),"Please Fill the Feeding Bottle",Toast.LENGTH_SHORT).show();
+                                }
+                                else{
+                                    needFeeding.setText("");
+                                }
                                 break;
                             case "PH Status":
+
                                 phStatus.setText(snapshotData.getValue().toString());
+
                                 break;
                             case "PH Value":
                                 phValue.setText(snapshotData.getValue().toString());
                                 break;
                             case "Turbidity":
+
                                 turbidityStatus.setText(snapshotData.getValue().toString());
+
                         }
                     }
                 }
 
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
     }
-
-
 
 
 }
