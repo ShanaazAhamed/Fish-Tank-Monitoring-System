@@ -154,7 +154,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="46dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
@@ -179,10 +179,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="182dp"
         android:layout_weight="1"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
+        android:gravity="center_horizontal|center_vertical"
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/button"
@@ -190,9 +190,79 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#BF5858"
             android:fontFamily="@font/poppins_medium"
+            android:onClick="feedNow"
             android:text="Feed Now"
             android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="#FFFFFF"
+            tools:ignore="UsingOnClickInXml" />
+
     </LinearLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="186dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="25px"
+            android:layout_marginTop="50px">
+
+            <TextView
+                android:id="@+id/lastUpdate1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:fontFamily="@font/poppins_medium"
+                android:inputType="textPersonName"
+                android:paddingLeft="15px"
+                android:text="Last PH/Turbidity Update"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="#7C7A7A"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/lastUpdatePH"
+                android:layout_width="241dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:fontFamily="@font/poppins_light"
+                android:inputType="textPersonName"
+                android:textColor="#7C7A7A"
+                android:textSize="12sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="25px"
+            android:layout_marginTop="50px">
+
+            <TextView
+                android:id="@+id/lastUpdate2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:fontFamily="@font/poppins_medium"
+                android:inputType="textPersonName"
+                android:paddingLeft="15px"
+                android:text="Last Feeder Upadate"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="#7C7A7A"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/lastUpdateFeeder"
+                android:layout_width="255dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:fontFamily="@font/poppins_light"
+                android:inputType="textPersonName"
+                android:textColor="#7C7A7A"
+                android:textSize="12sp" />
+        </TableRow>
+
+    </TableLayout>
 
 </LinearLayout>

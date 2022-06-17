@@ -8,6 +8,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,11 +26,15 @@ import com.google.firebase.messaging.FirebaseMessaging;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView turbidityStatus, phValue, phStatus, availableFood, needFeeding, progressText;
-    private DatabaseReference reference_data, reference_token;
+    private TextView turbidityStatus, phValue, phStatus, availableFood, needFeeding, progressText,lastUpdatePH,lastUpdateFeeder;
+    static DatabaseReference reference_data, reference_token;
+    private int feedNow = 0;
     private String token;
     private ProgressBar progressBar;
     int i = 0;
+
+    public MainActivity() {
+    }
 
 
     @Override
@@ -42,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
         needFeeding = findViewById(R.id.needFeeding);
         progressBar = findViewById(R.id.progress_bar);
         progressText = findViewById(R.id.progress_bar_text);
+        lastUpdatePH= findViewById(R.id.lastUpdatePH);
+        lastUpdateFeeder = findViewById(R.id.lastUpdateFeeder);
 
         reference_data = FirebaseDatabase.getInstance().getReference().child("Sensor Data");
         reference_token = FirebaseDatabase.getInstance().getReference().child("Tokens");
@@ -69,14 +77,22 @@ public class MainActivity extends AppCompatActivity {
                     for (DataSnapshot snapshotData : snapshot.getChildren()) {
                         switch (snapshotData.getKey().toString()) {
                             case "Available food":
-                                progressText.setText(String.valueOf(snapshotData.getValue())+"%");
+
                                 int val = Integer.valueOf(snapshotData.getValue().toString());
+                                if(val>0){
+                                    feedNow = 1;
+                                }
+                                else feedNow = 0;
+                                if(val<0){
+                                    val = 0;
+                                }
                                 progressBar.setProgress(val);
+                                progressText.setText(String.valueOf(val)+"%");
                                 break;
                             case "Need Feeding":
                                 if (snapshotData.getValue().toString().equals("Yes")){
                                     needFeeding.setText("Please Fill the Feeding Bottle");
-                                    Toast.makeText(MainActivity.this.getApplicationContext(),"Please Fill the Feeding Bottle",Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(MainActivity.this.getApplicationContext(),"Please Fill the Feeding Bottle",Toast.LENGTH_SHORT).show();
                                 }
                                 else{
                                     needFeeding.setText("");
@@ -91,20 +107,36 @@ public class MainActivity extends AppCompatActivity {
                                 phValue.setText(snapshotData.getValue().toString());
                                 break;
                             case "Turbidity":
-
                                 turbidityStatus.setText(snapshotData.getValue().toString());
-
+                                break;
+                            case "LastPh":
+                                lastUpdatePH.setText(snapshotData.getValue().toString());
+                                break;
+                            case "LastFeeder":
+                                lastUpdateFeeder.setText(snapshotData.getValue().toString());
+                                break;
                         }
                     }
                 }
 
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
     }
+
+    public void feedNow(View view) {
+        if(feedNow != 0){
+            reference_data.child("Feed Now").setValue("True");
+            Toast.makeText(MainActivity.this.getApplicationContext(),"Feeding Done",Toast.LENGTH_SHORT).show();
+        }
+        else{
+            reference_data.child("Feed Now").setValue("False");
+            Toast.makeText(MainActivity.this.getApplicationContext(),"Please Fill the Feeding Bottle",Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
 
 }
