@@ -13,4 +13,23 @@ the pH out of range on the android app.</li>
 <li>Turbidity checking system which uses a omni vision 5647 5MP camera module, image processing to check the turbidity and notify when to change the water by push notification</li>
 <li>Automatic feeding system which feed the fish at regular intervals using the servo motor, small container, ultrasonic sensor. The ultrasonic sensor is used to check the amount feed that is available and use the same notification system to communicate with the owner when the feed is low. Servo motor will operate at regular intervals using the time of raspberry pi which is connected to the internet as raspberry pi 3 B+ already have an in-built WIFI.</li>
 </ul>
-</p>
+<h3>Operating Environment</h3>
+<img src="https://user-images.githubusercontent.com/77115237/190553010-fe8954f2-1ebe-496d-b03d-0f732ae6d988.png" width="70%" height = "auto">
+
+<br>
+<br>
+<table border="0">
+  <tr>
+   <td>System</td>
+   <td><img src="https://user-images.githubusercontent.com/77115237/190554880-4598371d-eceb-4ad2-842f-b2d638db9103.jpeg" width="30%" height = "auto"></td>
+  </tr>
+   <tr>
+    <td>Android App</td>
+   <td><img src="https://user-images.githubusercontent.com/77115237/190553570-9ff4d0e2-af69-43d8-aa01-7ae7c214f7b0.jpg" width="30%" height = "auto"></td>
+  </tr>
+ <tr>
+    <td>Feeding Bottle</td>
+    <td><img src="https://user-images.githubusercontent.com/77115237/190554664-9764c945-b465-4d56-99ea-df4819750b07.jpg" width="30%" height = "auto"></td>
+ </tr>
+
+</table>
