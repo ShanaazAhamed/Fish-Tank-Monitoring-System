@@ -1,5 +1,8 @@
 # Fish ank Monitoring System
-Fish and other aquatic animals need a balanced pH for survival of them. This pH value can make fish sick and  even kill them. Therefore, we are proposing a system for fish tanks which monitors the value of pH using the pH  sensor and alert the specific person using notification. There after we can add baking soda to raise the pH and  add peat moss to lower the pH value. We also do check the turbidity of water using the camera and image  processing. In addition to that we propose an automated feeding system at regular intervals.
+
+<img src="https://user-images.githubusercontent.com/77115237/190552397-5318eeb5-e281-4473-b809-dc97bcf0f1cd.png" width="100%" height = "auto">
+<!--![image](https://user-images.githubusercontent.com/77115237/190552397-5318eeb5-e281-4473-b809-dc97bcf0f1cd.png)-->
+Fish and other aquatic animals need a balanced pH for survival of them. This pH value can make fish sick and  even kill them. Therefore, we are proposing a system for fish tanks which monitors the value of pH using the pH  sensor and alert the specific person using notification. There after we can add baking soda to raise the pH and add peat moss to lower the pH value. We also do check the turbidity of water using the camera and image  processing. In addition to that we propose an automated feeding system at regular intervals.
 
 <h2>Project Scope</h2>
 <p>This project will focus on developing a pH meter using an analog pH meter, conversion module and Arduino for pH monitoring. For turbidity monitoring, we use camera module and cover software parts.
