@@ -135,4 +135,12 @@ void loop()
 python code to recieve in the RPi is atached in the above final codes folder
 
 <h3>Turbidity monitoring system</h3>
-This is an OCR based approach to determine two states turbid or not turbid. We place a word inside the water and take the photo of the word and try to detect text using OCR. if the water is turbid the word would not be fetected. 
+This is an OCR based approach to determine two states turbid or not turbid. We place a word inside the water and take the photo of the word and try to detect text using OCR. if the water is turbid the word would not be detected. For this we used openCV library for image processing and Tesseract OCR engine to perform OCR.
+First we need to adjust a threshold value in the thresh function of the code to set our preferred turbidty as the threshold turbidity level beyond this would be turbid means text becomes undetected as we set threshold value.
+Pi camera module is used to capture the image of the word. Then image processing gryescaling,noise reduction and then thresholding. Finally OCR for the particular processed image. I have attached necessary python codes to the final codes folder. 
+
+![WhatsApp Image 2022-06-17 at 11 43 58 AM](https://user-images.githubusercontent.com/77114773/197246389-c1b8712e-22a5-42e4-a2ad-a81e00823fdb.jpeg)
+![WhatsApp Image 2022-06-17 at 11 41 47 AM](https://user-images.githubusercontent.com/77114773/197246632-ed3052c6-555d-4dee-909d-6931f00408e3.jpeg)
+
+<h3>Automated feeding system</h3>
+We use servo motor attached with the bottle containing feed to operate by opening and closing the hole(feed dispenser) of the bottle. The servomotor is set to automatically operate by preset times daily (for eg : 8.00 am daily). There fore we donot need to feed manually.We can also use the feed now button in the android app to feed instantly from anywhere in the world. We use ultrasonic sensor to read the distance inside the bottle to calculate the amount of feed available inside the bottle. This amount will 
