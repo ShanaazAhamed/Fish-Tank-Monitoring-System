@@ -1,6 +1,6 @@
 import pyrebase
 
-config = {"apiKey": "AIzaSyCkqGxtAcOLJGHAqU2xuh62-JmwVUVaieQ","authDomain": "fishtankapp-88d91.firebaseapp.com","databaseURL": "https://fishtankapp-88d91-default-rtdb.firebaseio.com","projectId": "fishtankapp-88d91","storageBucket": "fishtankapp-88d91.appspot.com","messagingSenderId": "1005906945937","appId": "1:1005906945937:web:da5489a60f642196ea5c30"
+config = {"apiKey": "","authDomain": "","databaseURL": "","projectId": "","storageBucket": "","messagingSenderId": "","appId": ""
 }
 
 firebase = pyrebase.initialize_app(config)

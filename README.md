@@ -1,7 +1,7 @@
 # Fish Tank Monitoring System
 
 <img src="https://user-images.githubusercontent.com/77115237/190552397-5318eeb5-e281-4473-b809-dc97bcf0f1cd.png" width="100%" height = "auto">
-<!--![image](https://user-images.githubusercontent.com/77115237/190552397-5318eeb5-e281-4473-b809-dc97bcf0f1cd.png)-->
+
 Fish and other aquatic animals need a balanced pH for survival of them. This pH value can make fish sick and  even kill them. Therefore, we are proposing a system for fish tanks which monitors the value of pH using the pH  sensor and alert the specific person using notification. There after we can add baking soda to raise the pH and add peat moss to lower the pH value. We also do check the turbidity of water using the camera and image  processing. In addition to that we propose an automated feeding system at regular intervals.
 
 ## Project Scope 
@@ -16,9 +16,9 @@ the pH out of range on the android app.
 
 
 ## Operating Environment 
-<p align="center">
-<img src="https://user-images.githubusercontent.com/77115237/190553010-fe8954f2-1ebe-496d-b03d-0f732ae6d988.png" width="50%" height = "auto">
-</p>
+
+<img src="./img/connection_c.png" width="100%" height = "auto">
+
 
 ### Our system mainly contains three main parts
   1. PH monitoring system
@@ -35,7 +35,7 @@ We have built an android app to monitor pH value, whether turbid or not, feed le
 
 ### pH monitoring system
 
-We use the `pH probe` with `BNC electrode` to measure the pH value. We use `arduino UNO` to get the readings as the pH module produces analog output. We cannot connect the pH sensor kit with the `raspberry Pi`. Our whole system is intergrated with Raspberry Pi and this is the only component that cannot be connected with the RPi. So we read using the Arduino UNO board and then send the values to the raspberry Pi using `serial communication`. Before starting the rreadings we need to calibrate the pH sensor with the provided pH solutions in order to aquire a higher accuray.
+We use the `pH probe` with `BNC electrode` to measure the pH value. We use `arduino UNO` to get the readings as the pH module produces analog output. We cannot connect the pH sensor kit with the `raspberry Pi`. Our whole system is integrated with Raspberry Pi and this is the only component that cannot be connected with the RPi. So we read using the Arduino UNO board and then send the values to the raspberry Pi using `serial communication`. Before starting the readings we need to calibrate the pH sensor with the provided pH solutions in order to acquire a higher accuracy.
 
 ### code for measuring the pH value
 
@@ -124,29 +124,35 @@ void loop()
 }
 
 ```
-<img src="https://user-images.githubusercontent.com/77114773/197242007-fd786fd0-8f41-49d1-b598-8a99a87581db.jpeg" width="50%" height = "auto">
-<img src="https://user-images.githubusercontent.com/77114773/197243025-b4cc25af-4432-4134-99ca-25ec3c9fb36e.png" width="50%" height = "auto">
-source:www.electroniclinic.com
+<img src="./img/ph_c.jpeg" width="auto" height = "auto">
 
 
+**python code to receive in the RPi is attached in the above final codes folder**
 
-python code to recieve in the RPi is atached in the above final codes folder
+### Turbidity monitoring system
 
-<h3>Turbidity monitoring system</h3>
 This is an OCR based approach to determine two states turbid or not turbid. We place a word inside the water and take the photo of the word and try to detect text using OCR. if the water is turbid the word would not be detected. For this we used openCV library for image processing and Tesseract OCR engine to perform OCR.
-First we need to adjust a threshold value in the thresh function of the code to set our preferred turbidty as the threshold turbidity level beyond this would be turbid means text becomes undetected as we set threshold value.
-Pi camera module is used to capture the image of the word. Then image processing gryescaling,noise reduction and then thresholding. Finally OCR for the particular processed image. The powerpoint presentation inside the Doucments directory explains how image processing is done. I have attached necessary python codes to the finalcodes/ocr_tos
 
-![WhatsApp Image 2022-06-17 at 11 43 58 AM](https://user-images.githubusercontent.com/77114773/197246389-c1b8712e-22a5-42e4-a2ad-a81e00823fdb.jpeg)
-![WhatsApp Image 2022-06-17 at 11 41 47 AM](https://user-images.githubusercontent.com/77114773/197246632-ed3052c6-555d-4dee-909d-6931f00408e3.jpeg)
+First we need to adjust a threshold value in the thresh function of the code to set our preferred turbidity as the threshold turbidity level beyond this would be turbid means text becomes undetected as we set threshold value.
+Pi camera module is used to capture the image of the word. Then image processing gray scaling,noise reduction and then threshold. Finally OCR for the particular processed image. The powerpoint presentation inside the `./Documents` directory explains how image processing is done. I have attached necessary python codes to the `./Final Codes/ocr_tos`
 
-<h3>Automated feeding system</h3>
-We use servo motor attached with the bottle containing feed to operate by opening and closing the hole(feed dispenser) of the bottle. The servomotor is set to automatically operate by preset times daily (for eg : 8.00 am daily). There fore we donot need to feed manually.We can also use the feed now button in the android app to feed instantly from anywhere in the world. We use ultrasonic sensor to read the distance inside the bottle to calculate the amount of feed available inside the bottle. This amount will be updated as a percentage on the android dashboard. amount_feed = ((maximum_distance-present_distance)/maximum_distance)x100.
+<img src="./img/turbidity_c.jpeg" width="auto" height = "auto">
 
-all the necessary codes are added in the finalcodes/feeder
-![WhatsApp Image 2022-06-17 at 11 41 29 AM](https://user-images.githubusercontent.com/77114773/197248289-94b3f96e-c07c-4de4-b166-14f13834eb8d.jpeg)
+<Br/>
 
-whole system
-![WhatsApp Image 2022-06-17 at 11 43 58 AM](https://user-images.githubusercontent.com/77114773/197248783-6f580b98-0f69-403b-a557-fd04d4f6ae0a.jpeg)
+### Automated feeding system
+
+We use servo motor attached with the bottle containing feed to operate by opening and closing the hole(feed dispenser) of the bottle. The servomotor is set to automatically operate by preset times daily (for eg : **8.00 am** daily). There fore we do not need to feed manually.We can also use the feed now button in the android app to feed instantly from anywhere in the world. We use ultrasonic sensor to read the distance inside the bottle to calculate the amount of feed available inside the bottle. This amount will be updated as a percentage on the android dashboard.
+
+``` 
+amount_feed = ((maximum_distance-present_distance)/maximum_distance)x100.
+```
+
+
+**All the necessary codes are added in the `./Final Codes`**
+
+### Feeder
+
+<img src="./img/feeder_c.jpeg" width="auto" height = "auto">
 
 
