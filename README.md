@@ -4,52 +4,42 @@
 <!--![image](https://user-images.githubusercontent.com/77115237/190552397-5318eeb5-e281-4473-b809-dc97bcf0f1cd.png)-->
 Fish and other aquatic animals need a balanced pH for survival of them. This pH value can make fish sick and  even kill them. Therefore, we are proposing a system for fish tanks which monitors the value of pH using the pH  sensor and alert the specific person using notification. There after we can add baking soda to raise the pH and add peat moss to lower the pH value. We also do check the turbidity of water using the camera and image  processing. In addition to that we propose an automated feeding system at regular intervals.
 
-<h2>Project Scope</h2>
+## Project Scope 
 <p>This project will focus on developing a pH meter using an analog pH meter, conversion module and Arduino for pH monitoring. For turbidity monitoring, we use camera module and cover software parts.
-This project will include,
-<ul>
-<li>pH monitoring system using Analog pH sensor, BNC connector which is connected to the raspberry pi 3 B+ and display the real time output to the LCD showing current pH value and the range of the suitable pH value. When the pH value changes out of the range the display will output a message saying that 
-the pH out of range on the android app.</li>
-<li>Turbidity checking system which uses a omni vision 5647 5MP camera module, image processing to check the turbidity and notify when to change the water by push notification</li>
-<li>Automatic feeding system which feed the fish at regular intervals using the servo motor, small container, ultrasonic sensor. The ultrasonic sensor is used to check the amount feed that is available and use the same notification system to communicate with the owner when the feed is low. Servo motor will operate at regular intervals using the time of raspberry pi which is connected to the internet as raspberry pi 3 B+ already have an in-built WIFI.</li>
-</ul>
-<h3>Operating Environment</h3>
-<img src="https://user-images.githubusercontent.com/77115237/190553010-fe8954f2-1ebe-496d-b03d-0f732ae6d988.png" width="70%" height = "auto">
+This project will include, </p>
 
-<br>
-<br>
-<table border="0">
-  <tr>
-   <td>System</td>
-   <td><img src="https://user-images.githubusercontent.com/77115237/190554880-4598371d-eceb-4ad2-842f-b2d638db9103.jpeg" width="30%" height = "auto"></td>
-  </tr>
-   <tr>
-    <td>Android App</td>
-   <td><img src="https://user-images.githubusercontent.com/77115237/190553570-9ff4d0e2-af69-43d8-aa01-7ae7c214f7b0.jpg" width="30%" height = "auto"></td>
-  </tr>
- <tr>
-    <td>Feeding Bottle</td>
-    <td><img src="https://user-images.githubusercontent.com/77115237/190554664-9764c945-b465-4d56-99ea-df4819750b07.jpg" width="30%" height = "auto"></td>
- </tr>
+- PH monitoring system using Analog pH sensor, BNC connector which is connected to the raspberry pi 3 B+ and display the real time output to the LCD showing current pH value and the range of the suitable pH value. When the pH value changes out of the range the display will output a message saying that 
+the pH out of range on the android app.
 
-</table>
+- Turbidity checking system which uses a omni vision 5647 5MP camera module, image processing to check the turbidity and notify when to change the water by push notification
+- Automatic feeding system which feed the fish at regular intervals using the servo motor, small container, ultrasonic sensor. The ultrasonic sensor is used to check the amount feed that is available and use the same notification system to communicate with the owner when the feed is low. Servo motor will operate at regular intervals using the time of raspberry pi which is connected to the internet as raspberry pi 3 B+ already have an in-built WIFI.
 
-Our system mainly contains three main parts
-1. pH monitoring system
-2. Turbidity monitoring
-3. Automated Feeding system
 
-All are monitored and displayed through the android app
+## Operating Environment 
+<p align="center">
+<img src="https://user-images.githubusercontent.com/77115237/190553010-fe8954f2-1ebe-496d-b03d-0f732ae6d988.png" width="50%" height = "auto">
+</p>
+
+### Our system mainly contains three main parts
+  1. PH monitoring system
+  2. Turbidity monitoring
+  3. Automated Feeding system
+
+### All are monitored and displayed through the android app
 
 We have built an android app to monitor pH value, whether turbid or not, feed level. In addition to that we have added feed now button to feed the system manually instantly from anywhere. We use firebase to store data. 
-![WhatsApp Image 2022-06-17 at 11 43 39 AM](https://user-images.githubusercontent.com/77114773/197248711-8e8e52cc-1827-4a81-9425-cf471a50d302.jpeg)
 
-<h3>pH monitoring system</h3>
-We use the pH probe with BNC electrode to measure the pH value. We use arduino UNO to get the readings as the pH module produces analog output. We cannot connect the pH sensor kit with the raspberry Pi. Our whole system is intergrated with Raspberry Pi and this is the only component that cannot be connected with the RPi. So we read using the Arduino UNO board and then send the values to the raspberry Pi using serial communication. Before starting the rreadings we need to calibrate the pH sensor with the provided pH solutions in order to aquire a higher accuray. I have attached the connections and the code to read using the arduino and recieve through the RPi. 
-I hava attached necessary photos also.
+<p align="center">
+<img src="https://user-images.githubusercontent.com/77114773/197248711-8e8e52cc-1827-4a81-9425-cf471a50d302.jpeg" width="auto" height = "500px">
+</p>
 
-<h3>code for measuring the pH value...</h3>
+### pH monitoring system
 
+We use the `pH probe` with `BNC electrode` to measure the pH value. We use `arduino UNO` to get the readings as the pH module produces analog output. We cannot connect the pH sensor kit with the `raspberry Pi`. Our whole system is intergrated with Raspberry Pi and this is the only component that cannot be connected with the RPi. So we read using the Arduino UNO board and then send the values to the raspberry Pi using `serial communication`. Before starting the rreadings we need to calibrate the pH sensor with the provided pH solutions in order to aquire a higher accuray.
+
+### code for measuring the pH value
+
+~~~
 #include <Wire.h>
 //#include <Adafruit_GFX.h>
 //#include <Adafruit_SSD1306.h>
@@ -111,10 +101,11 @@ void loop() {
  Serial.print(ph_act);
  delay(1000);
 }
+~~~ 
  
- 
-<h3>code for voltage calibration of the pH sensor</h3>
+### Code for voltage calibration of the pH sensor
 
+```
 int pH_Value; 
 float Voltage;
  
@@ -132,8 +123,12 @@ void loop()
   delay(500); 
 }
 
-![WhatsApp Image 2022-06-17 at 11 41 48 AM](https://user-images.githubusercontent.com/77114773/197242007-fd786fd0-8f41-49d1-b598-8a99a87581db.jpeg)
-![image](https://user-images.githubusercontent.com/77114773/197243025-b4cc25af-4432-4134-99ca-25ec3c9fb36e.png) source:www.electroniclinic.com
+```
+<img src="https://user-images.githubusercontent.com/77114773/197242007-fd786fd0-8f41-49d1-b598-8a99a87581db.jpeg" width="50%" height = "auto">
+<img src="https://user-images.githubusercontent.com/77114773/197243025-b4cc25af-4432-4134-99ca-25ec3c9fb36e.png" width="50%" height = "auto">
+source:www.electroniclinic.com
+
+
 
 python code to recieve in the RPi is atached in the above final codes folder
 
