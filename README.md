@@ -33,3 +33,12 @@ the pH out of range on the android app.</li>
  </tr>
 
 </table>
+
+Our system mainly contains three main parts
+1. pH monitoring system
+2. Turbidity monitoring
+3. Automated Feeding system
+
+All are monitored and displayed through the android app 
+
+pH monitoring system
