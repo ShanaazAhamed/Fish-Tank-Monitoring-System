@@ -128,3 +128,11 @@ void loop()
   Serial.println(Voltage); 
   delay(500); 
 }
+
+![WhatsApp Image 2022-06-17 at 11 41 48 AM](https://user-images.githubusercontent.com/77114773/197242007-fd786fd0-8f41-49d1-b598-8a99a87581db.jpeg)
+![image](https://user-images.githubusercontent.com/77114773/197243025-b4cc25af-4432-4134-99ca-25ec3c9fb36e.png) source:www.electroniclinic.com
+
+python code to recieve in the RPi is atached in the above final codes folder
+
+<h3>Turbidity monitoring system</h3>
+This is an OCR based approach to determine two states turbid or not turbid. We place a word inside the water and take the photo of the word and try to detect text using OCR. if the water is turbid the word would not be fetected. 
