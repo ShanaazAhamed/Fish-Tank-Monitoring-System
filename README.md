@@ -15,6 +15,13 @@ the pH out of range on the android app.
 - Automatic feeding system which feed the fish at regular intervals using the servo motor, small container, ultrasonic sensor. The ultrasonic sensor is used to check the amount feed that is available and use the same notification system to communicate with the owner when the feed is low. Servo motor will operate at regular intervals using the time of raspberry pi which is connected to the internet as raspberry pi 3 B+ already have an in-built WIFI.
 
 
+## Used Technologies
+<p align="center">
+    <img src="https://skillicons.dev/icons?i=raspberrypi,arduino,firebase,py" />
+</p>
+
+***
+
 ## Operating Environment 
 
 <img src="./img/connection_c.png" width="100%" height = "auto">
