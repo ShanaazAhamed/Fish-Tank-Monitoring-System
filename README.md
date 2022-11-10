@@ -17,7 +17,7 @@ the pH out of range on the android app.
 
 ## Used Technologies
 <p align="center">
-    <img src="https://skillicons.dev/icons?i=raspberrypi,arduino,firebase,py" />
+    <img src="https://skillicons.dev/icons?i=raspberrypi,arduino,firebase,py,androidstudio,java" />
 </p>
 
 ***
