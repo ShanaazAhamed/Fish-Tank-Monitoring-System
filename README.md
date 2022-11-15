@@ -46,7 +46,7 @@ We use the `pH probe` with `BNC electrode` to measure the pH value. We use `ardu
 
 ### code for measuring the pH value
 
-~~~
+~~~io
 #include <Wire.h>
 //#include <Adafruit_GFX.h>
 //#include <Adafruit_SSD1306.h>
@@ -112,7 +112,7 @@ void loop() {
  
 ### Code for voltage calibration of the pH sensor
 
-```
+```io
 int pH_Value; 
 float Voltage;
  
@@ -151,7 +151,7 @@ Pi camera module is used to capture the image of the word. Then image processing
 
 We use servo motor attached with the bottle containing feed to operate by opening and closing the hole(feed dispenser) of the bottle. The servomotor is set to automatically operate by preset times daily (for eg : **8.00 am** daily). There fore we do not need to feed manually.We can also use the feed now button in the android app to feed instantly from anywhere in the world. We use ultrasonic sensor to read the distance inside the bottle to calculate the amount of feed available inside the bottle. This amount will be updated as a percentage on the android dashboard.
 
-``` 
+```py
 amount_feed = ((maximum_distance-present_distance)/maximum_distance)x100.
 ```
 
